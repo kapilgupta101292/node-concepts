@@ -8,7 +8,7 @@ server.on('request', (req, res) => {
 	// 	res.end(data);
 	// });
 
-	// Solution - 2 Streams
+	// Solution - 2 Streams, Solve the problem of storing data in memory
 	// const readable = fs.createReadStream('test-file.txt');
 	// readable.on('data', (chunk) => {
 	// 	res.write(chunk);
@@ -24,7 +24,7 @@ server.on('request', (req, res) => {
 	// 	res.end('There was an error');
 	// });
 
-	// Solution 3:
+	// Solution 3: Solve the problem of backpressure
 	const readable = fs.createReadStream('test-file.txt');
 	readable.pipe(res);
 });
